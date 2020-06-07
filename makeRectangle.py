@@ -99,6 +99,6 @@ def makeRectangle(image_path,east ='frozen_east_text_detection.pb',min_confidenc
 
 
 if __name__=='__main__':
-	cv2.imshow("iamge",makeRectangle('abc.jpg')[0])
+	cv2.imshow("iamge",makeRectangle('im.png')[0])
 	cv2.waitKey(0)
 

@@ -22,7 +22,7 @@ def getText(images_list):
 	return full_text
 
 if __name__=='__main__':
-	images_list = makeRectangle('test.jpg')
+	images_list = makeRectangle('im.png')
 	for image in images_list:
 		cv2.imshow("image",image)
 		cv2.waitKey(0)
