@@ -1,5 +1,7 @@
 import { OnInit,Component } from '@angular/core';
 import {ApiService} from '../services/api.service';
+import { LoadingController } from '@ionic/angular';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,10 @@ import {ApiService} from '../services/api.service';
 export class HomePage implements OnInit {
 
   text;
-  constructor(private postservice:ApiService) {}
+  image;
+  constructor(private postservice:ApiService, 
+  			  private loadingController:LoadingController,
+  			  private _sanitizer: DomSanitizer) {}
   ngOnInit(){
   	console.log(Date.now());
   }
@@ -17,10 +22,29 @@ export class HomePage implements OnInit {
   fileToUpload :File=null;
 	handleFileInput(files:FileList,autoUpdate=0){
 		this.fileToUpload = files.item(0);
-		this.test();
+		var reader = new FileReader();
+	    reader.readAsDataURL(this.fileToUpload);
+	    reader.onload = (event)=>{
+	    	this.image = event.target.result;
+	    }
+	}
+
+   addImage(){
+   	(document.querySelector("#image") as any).click();
    }
 
-   test(){
+   async submit(){
+
+	   	const loading = await this.loadingController.create({
+	   	  cssClass:'spinner',
+	      spinner:'crescent',
+	      message: 'Loading...',
+	      translucent: true,
+	      backdropDismiss: true
+	    });
+
+	    await loading.present();
+
 		let id = ((Date.now() as any) as string);
 		const formData = new FormData();
 		formData.append('identifier',id);
@@ -28,14 +52,21 @@ export class HomePage implements OnInit {
 		this.postservice.create('http://importfreshie.pythonanywhere.com'+'/convert/',formData)
 			.subscribe(response=>{
 				console.log(response);
+				this.image = response['picture'];
 				const fd = new FormData();
 				fd.append('identifier',id);
 				this.postservice.create('http://importfreshie.pythonanywhere.com'+'/gettext/',fd)
 					.subscribe(response=>{
 						console.log(response)
 						this.text = response['response'];
+						loading.dismiss();
 					});
 			});
 
+	}
+
+	reset(){
+		this.image="";
+		this.text="";
 	}
 }
