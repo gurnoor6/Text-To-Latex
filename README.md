@@ -9,4 +9,7 @@ How to Use-
 * To run the OCR part, run `python ocr.py`. To use custom image, change the path of image in `ocr.py`.
 * To run the formatting part, run `python main.py` inside the regex folder in the repo. The text is set in `data.txt` file. 
 
-To see an illustration, see `samples/` directory. 
+* For prediction of handwritten text, follow:
+	- `cd src`
+	- For sample test, uncomment the last two lines of the file **predict.py**, change *image_path* variable to one of the images in `src/images/` directory and run `python predict.py`.
+	- For deployment, use function *predictions* in **predict.py**.    
