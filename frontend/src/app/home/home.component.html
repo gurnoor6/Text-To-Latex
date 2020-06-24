@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Inconsolata", sans-serif}
+body {font-size:20px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Textify<br><br></b>import_freSHiE</h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">HOME</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">PROJECT</a> 
+    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">TEAM</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CONTACT</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>import_freSHiE</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Textify...</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Our Idea</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p> Hello Visitor.There have been multiple instances in our life where we have scanned our handwritten mathematical documents and find ourselves frustrated, not being able to use it for searching or copying the text. Also, it would be an insurmountable task to go through the entire document, considering the huge size of it. 
+            Our project aims to eliminate the extra effort put in by converting the handwritten text to LaTeX script, and hence easing the difficulty faced and also providing the scope for formatting and designing better.</p>
+  </div>
+  
+  <!-- Photo grid (modal) -->
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Textify It Yourself!</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h3>Choose the image you want to textify</h3>
+    <span style="color:red;" *ngIf="message">{{message}}</span>
+    <input #file type="file" accept='image/*' (change)="preview(file.files)" (change)="onFileListener($event)"/>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+    <br>
+    <button *ngIf= "this.visible" type= "button" style="margin:5px;" class="btn btn-success" (click)="onUpload()" >Upload</button>
+    <button type= "button" style="margin:5px;" class="btn btn-info" (click)="onReset()">Reset</button>
+    <br>
+    <span style="color:red;" *ngIf = "this.Mytext">Here is your Text</span>
+    <br>
+    {{ this.Mytext }}
+  </div>
+  
+
+  <!-- The Team -->
+  <div class="w3-container" style="padding:128px 16px" id="team">
+        <h3 class="w3-center">THE TEAM</h3>
+        <p class="w3-center w3-large">The ones who created Textify</p>
+        <div class="w3-row-padding " style="margin-top:64px">
+          
+          <div class="w3-col l3 m6 w3-margin-bottom">
+            <div class="w3-card">
+              <img src="../../assets/images/sam.jpg" alt="Sam" style="width:100%">
+              <div class="w3-container">
+                <h3>Sambit Behera</h3>
+                <p class="w3-opacity">CSE, IIT Bombay</p>
+                <p>Curious to learn</p>
+                <p><a href = "https://github.com/LostSam423"><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></a></p>
+              </div>
+            </div>
+          </div>
+          <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="../../assets/images/siba.jpg" alt="Siba" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Sibasis Nayak</h3>
+                    <p class="w3-opacity">CSE, IIT Bombay</p>
+                    <p>Hello Everyone</p>
+                    <p><a href ="https://github.com/Siba-07"><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></a></p>
+                  </div>
+                </div>
+              </div>
+          <div class="w3-col l3 m6 w3-margin-bottom">
+            <div class="w3-card">
+              <img src="../../assets/images/gucci.jpg" alt="Gucci" style="width:100%">
+              <div class="w3-container">
+                <h3>Gurnoor Singh</h3>
+                <p class="w3-opacity">CSE, IIT Bombay</p>
+                <p>Impacting since 2001</p>
+                <p><a href="https://github.com/gurnoor6"><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></a></p>
+              </div>
+            </div>
+          </div>
+          <div class="w3-col l3 m6 w3-margin-bottom">
+            <div class="w3-card">
+              <img src="../../assets/images/abhi.jpg" alt="Shotu" style="width:100%">
+              <div class="w3-container">
+                <h3>Abhinav Gupta</h3>
+                <p class="w3-opacity">CSE, IIT Bombay</p>
+                <p>Might get smaller</p>
+                <p><a href="https://github.com/guptabhinav49"><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button> </a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Packages / Pricing Tables -->
+
+  <!-- Contact -->
+  <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+        <h3 class="w3-center">CONTACT</h3>
+        <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+        <div class="w3-center" style="margin-top:48px">
+          <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> IIT Bombay, Mumbai,India</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> sibasisnayak07@gmail.com</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> beherasambit423@gmail.com</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> gurnoor6@gmail.com</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> guptaabhinav@gmail.com</p>
+          <br>
+          <!-- Image of location/map -->
+          <img src="../../assets/images/iit.jpg" class="w3-image" style="width:100%;margin-top:48px">
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="w3-center w3-black w3-padding-64">
+        <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+        <div class="w3-xlarge w3-section">
+          <i class="fa fa-facebook-official w3-hover-opacity"></i>
+          <i class="fa fa-instagram w3-hover-opacity"></i>
+          <i class="fa fa-twitter w3-hover-opacity"></i>
+          <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+        
+    </footer>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<!-- <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div> -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
