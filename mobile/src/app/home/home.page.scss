@@ -1,0 +1,25 @@
+.box{
+  height:200px;
+  width:100%;
+  border-radius: 24px;
+}
+
+.upload-box{
+  background-color: rgba(128,128,128,0.3);
+  box-shadow: 0 0 5px 5px rgba(128,128,128,0.5);
+}
+
+.plus-sign{
+  margin-top: 15%;
+  color:rgba(128,128,128,0.9);
+  font-size:64px;
+}
+
+.spinner{
+  --min-height:150px;
+  --min-width:300px;
+}
+
+#myimg{
+  object-fit: cover;
+}

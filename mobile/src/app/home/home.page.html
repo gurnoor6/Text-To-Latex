@@ -1,0 +1,49 @@
+<ion-header translucent="true">
+  <ion-toolbar >
+    <ion-title class="ion-text-center">
+      Textify
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large" class="ion-text-center">Textify</ion-title>
+      </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <input type="file" class="form-control d-none" id="image" (change)="handleFileInput($event.target.files)" >
+    <!-- <p class="lead" *ngIf="text">{{text}}</p> -->
+  </div>
+  <div class="text-center">
+      <ion-card>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="10">
+                <img [src]="image" id="myimg" class="box upload-box" *ngIf="image">
+                <ion-grid *ngIf="!image" class="box upload-box">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col class="plus-sign" (click)="addImage()">
+                      +
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-button color="dark" *ngIf="!text" (click)="submit()">Submit</ion-button>
+            {{text}}
+            <br>
+            <ion-button color="dark" (click)="reset()"> Try Again!</ion-button>
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+  </div>
+
+</ion-content>

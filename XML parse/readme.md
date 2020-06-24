@@ -1,0 +1,1 @@
+our fetch rectangle functions is basically ready. All we need to do is take out image samples from the scenetesttrial folder and put them in main folder. I cleared them out to prevent cluttering
