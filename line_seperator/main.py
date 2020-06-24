@@ -7,17 +7,6 @@ import numpy as np
 from heapq import *
 import cv2
 
-# sobel_image = sobel(img)
-# plt.figure(figsize=(8,8))
-# plt.axis("off")
-# plt.imshow(sobel_image, cmap="gray")
-# plt.show()
-
-# sobel_image = sobel(img)
-# hpp = horizontal_projections(sobel_image)
-# plt.plot(hpp)
-# plt.show()
-
 def find_peak_indices(image, divider=2):
     '''
         Input: image (as numpy array)
@@ -178,43 +167,7 @@ def get_lines(img_path):
 img_path = "handwritten3.jpg"
 line_images = get_lines(img_path)
 
-# print('Size:', len(line_images))
-# fig, ax = plt.subplots(figsize=(10,10), nrows=len(line_images))
-# for i, line in enumerate(line_images):
-#     ax[i].imshow(line)
-
-# plt.show()
-# cv2.imshow('first', line_images[0])
-# cv2.waitKey(0)
 for i, line in enumerate(line_images):
     cv2.imshow(f'{i}', line)
     print(line)
     cv2.waitKey(0)
-
-# segmented_img = np.copy(img)
-# r,c = segmented_img.shape
-# for ri in range(r):
-#     if ri in peaks_index:
-#         segmented_img[ri, :] = 0
-        
-# plt.figure(figsize=(20,20))
-# plt.imshow(segmented_img, cmap="gray")
-# plt.show()
-
-# def get_road_block_regions(nmap):
-#     road_blocks = []
-#     needtobreak = False
-    
-#     for col in range(nmap.shape[1]):
-#         start = col
-#         end = col+20
-#         if end > nmap.shape[1]-1:
-#             end = nmap.shape[1]-1
-#             needtobreak = True
-#         if path_exists(nmap[:, start:end]) == False:
-#             road_blocks.append(col)
-#         if needtobreak == True:
-#             break
-            
-#     return road_blocks
-
