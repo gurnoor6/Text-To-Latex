@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from .ocr import getImageText
+from .src.predict import predictions
 
 class Conversion(viewsets.ModelViewSet):
 	queryset = Convert.objects.all()
@@ -27,7 +28,9 @@ def getText(request):
 		# print(t)
 		convert_serializer = ConvertSerializer(images,many=True)
 		if(len(images)==1):
-			text = getImageText("media/"+images[0].picture.name)
+			# text = getImageText("media/"+images[0].picture.name)
+			text = predictions("media/"+images[0].picture.name)
+			print(text)
 			return JsonResponse({"response":text})
 		else:
 			return JsonResponse({"response":"fail"})

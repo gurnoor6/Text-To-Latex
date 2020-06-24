@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 from glob import glob
 from tqdm import tqdm
-from data import preproc as pp
+from texttolatex.src.data import preproc as pp
 from functools import partial
 
 

@@ -4,11 +4,11 @@ import datetime
 import string
 import cv2
 
-from data import preproc as pp
-from data.generator import DataGenerator, Tokenizer
-from data.reader import Dataset
-from network.model import HTRModel
-from data import line_seperation as seperator
+from .data import preproc as pp
+from .data.generator import DataGenerator, Tokenizer
+from .data.reader import Dataset
+from .network.model import HTRModel
+from .data import line_seperation as seperator
 
 # define parameters
 source = "bentham"
@@ -17,20 +17,22 @@ epochs = 1000
 batch_size = 16
 
 # define paths
-source_path = os.path.join("..", "data", f"{source}.hdf5")
-output_path = os.path.join("..", "output", source, arch)
-target_path = os.path.join(output_path, "checkpoint_weights.hdf5")
-os.makedirs(output_path, exist_ok=True)
+# source_path = os.path.join("..", "data", f"{source}.hdf5")
+# output_path = os.path.join("..", "output", source, arch)
+# target_path = os.path.join(output_path, "checkpoint_weights.hdf5")
+# os.makedirs(output_path, exist_ok=True)
+
+target_path = "checkpoint_weights.hdf5"
 
 # define input size, number max of chars per line and list of valid chars
 input_size = (1024, 128, 1)
 max_text_length = 128
 charset_base = string.printable[:95]
 
-print("source:", source_path)
-print("output", output_path)
-print("target", target_path)
-print("charset:", charset_base)
+# print("source:", source_path)
+# print("output", output_path)
+# print("target", target_path)
+# print("charset:", charset_base)
 
 def predictions(img_path, predictions_per_line=5, verbose = False):
     '''
@@ -39,6 +41,10 @@ def predictions(img_path, predictions_per_line=5, verbose = False):
     			in a list, prints if verbose is True
     '''
 
+    # print("\n\n\n\n\n", img_path, "\n\n\n\n\n")
+
+    # x = cv2.imread(img_path)
+    # print(x)
 
     lines = seperator.get_lines(img_path)
 
@@ -65,11 +71,15 @@ def predictions(img_path, predictions_per_line=5, verbose = False):
         if verbose:
         	print_predictions(predicts, probabilities)
 
-        	cv2.imshow(f'{index}', line)
-        	cv2.waitKey(0)
+        	# cv2.imshow(f'{index}', line)
+        	# cv2.waitKey(0)
         	print("\n####################################"  )
 
-    return l
+    # print("\n\n\n\n",l ,"\n\n\n\n\n")
+    s=""
+    for item in l:
+        s = s+item[0][0]+"\n"
+    return s
 
 def print_predictions(predicts, probs):
 	for i, (pred, prob) in enumerate(zip(predicts, probs)):
@@ -79,5 +89,5 @@ def print_predictions(predicts, probs):
 			print(f"{pb:.4f} - {pd}")
 
 
-# img_path = "images/handwritten9.jpg"
+# img_path = "images/handwritten6.jpg"
 # predictions(img_path, verbose=True)

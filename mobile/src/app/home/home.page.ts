@@ -49,13 +49,13 @@ export class HomePage implements OnInit {
 		const formData = new FormData();
 		formData.append('identifier',id);
 		formData.append('picture',this.fileToUpload,this.fileToUpload.name);
-		this.postservice.create('http://importfreshie.pythonanywhere.com'+'/convert/',formData)
+		this.postservice.create('http://localhost:8000'+'/convert/',formData)
 			.subscribe(response=>{
 				console.log(response);
 				this.image = response['picture'];
 				const fd = new FormData();
 				fd.append('identifier',id);
-				this.postservice.create('http://importfreshie.pythonanywhere.com'+'/gettext/',fd)
+				this.postservice.create('http://localhost:8000'+'/gettext/',fd)
 					.subscribe(response=>{
 						console.log(response)
 						this.text = response['response'];

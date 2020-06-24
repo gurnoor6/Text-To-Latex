@@ -5,7 +5,7 @@ Image renderings and text are created on the fly each time.
 
 from itertools import groupby
 
-import data.preproc as pp
+import texttolatex.src.data.preproc as pp
 import h5py
 import numpy as np
 import unicodedata
